@@ -4,11 +4,11 @@
 #### より品質を上げるため［[OBS StreamFX](https://github.com/Xaymar/obs-StreamFX)］を導入することをおすすめします。
 #### シェーダーについて
 * **crt.hlsl: ブラウン管シェーダー**
-Distortion: 湾曲
-Wideness: 横長
-contrast: コントラスト
-Oozing: 滲み
-Blueish: 青っぽさ
+    * Distortion: 湾曲
+    * Wideness: 横長
+    * contrast: コントラスト
+    * Oozing: 滲み
+    * Blueish: 青っぽさ
 
 ### 適用イメージ
 
