@@ -26,6 +26,13 @@ uniform float _contrast;
 #pragma shaderfilter set _oozing__slider true
 uniform float _oozing;
 
+#pragma shaderfilter set _blueish__description Blueish
+#pragma shaderfilter set _blueish__default 0.2
+#pragma shaderfilter set _blueish__max 1.0
+#pragma shaderfilter set _blueish__min 0.0
+#pragma shaderfilter set _blueish__slider true
+uniform float _blueish;
+
 float rand(float2 uv)
 {
     return frac(sin(dot(uv, float2(12.9898, 78.233))) * 43756.5453);
@@ -107,6 +114,8 @@ float4 render(float2 uv)
     col.r = (isR + (isG+isB)*_oozing*0.8) * ease_r;
     col.g = (isG + (isR+isB)*_oozing*0.8) * ease_g;
     col.b = (isB + (isR+isG)*_oozing*0.8) * ease_b;
+
+    col = lerp(col, float4(0, 0, col.r*0.29891 + col.g*0.58661 + col.b*0.11448, 1), _blueish*0.5);
 
     return float4(col.rgb, 1);
 }

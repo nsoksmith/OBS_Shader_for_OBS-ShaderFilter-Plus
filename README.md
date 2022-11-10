@@ -1,7 +1,14 @@
-# OBS_Shader_for_OBS ShaderFilter Plus
+**# OBS_Shader_for_OBS ShaderFilter Plus
  
 #### このシェーダーはフィルタープラグイン［[OBS ShaderFilter Plus](https://github.com/Limeth/obs-shaderfilter-plus)］用のシェーダーです。
 #### より品質を上げるため［[OBS StreamFX](https://github.com/Xaymar/obs-StreamFX)］を導入することをおすすめします。
+#### シェーダーについて
+* **crt.hlsl: ブラウン管シェーダー**
+Distortion: 湾曲
+Wideness: 横長
+contrast: コントラスト
+Oozing: 滲み
+Blueish: 青っぽさ
 
 ### 適用イメージ
 
@@ -24,4 +31,4 @@ _StreamFX_
 _ShaderFilter Plus_
 
 ![image](https://user-images.githubusercontent.com/74223118/201067586-3185bf79-92bc-4003-92f5-da829fc956bd.png)
-_StreamFX_
+_StreamFX_**
