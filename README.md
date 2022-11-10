@@ -1,9 +1,9 @@
 # OBS_Shader_for_OBS ShaderFilter Plus
  
-####このシェーダーはフィルタープラグイン［[OBS ShaderFilter Plus](https://github.com/Limeth/obs-shaderfilter-plus)］用のシェーダーです。
-####より品質を上げるため［[OBS StreamFX](https://github.com/Xaymar/obs-StreamFX)］を導入することをおすすめします。
+#### このシェーダーはフィルタープラグイン［[OBS ShaderFilter Plus](https://github.com/Limeth/obs-shaderfilter-plus)］用のシェーダーです。
+#### より品質を上げるため［[OBS StreamFX](https://github.com/Xaymar/obs-StreamFX)］を導入することをおすすめします。
 
-###適用イメージ
+### 適用イメージ
 
 ![image](https://user-images.githubusercontent.com/74223118/201061689-44e4fb5d-b28e-4901-9479-0fffb92cf20c.png)
 _① Original_
@@ -16,7 +16,7 @@ _③ This Shader + Blur filter_
 
 ![image](https://user-images.githubusercontent.com/74223118/201066906-720e307f-5442-428c-a6f8-7d32f99035d0.png)
 
-###おすすめフィルター設定
+### おすすめフィルター設定
 ![image](https://user-images.githubusercontent.com/74223118/201067409-2264aa67-777b-4de4-86b7-b794010beaf2.png)
 _StreamFX_
 
