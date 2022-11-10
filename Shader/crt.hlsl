@@ -53,18 +53,20 @@ float4 gaussian_sample(float2 uv, float2 dx, float2 dy)
     return col;
 }
 
-float ease_in_out_cubic(float x)
+float ease_in_out_cubic(float x, float base)
 {
-    return x < 0.5
-        ? 4 * x * x * x
-        : 1 - pow(-2 * x + 2, 3) / 2; 
+    float x2 = -2 * x + 2;
+    float tmp =  x < 0.5 ?
+        4 * x * x * x :
+        1 - x2*x2*x2 / 2; 
+    return saturate(tmp*tmp - (1 - base)) / base;
 }
 
 float crt_ease(float x, float base, float offset)
 {
     float tmp = fmod(x + offset, 1);
     float xx = 1 - abs(tmp * 2 - 1);
-    float ease = ease_in_out_cubic(xx);
+    float ease = ease_in_out_cubic(xx, base);
     return ease * base + base * 0.8;
 }
 
@@ -90,16 +92,21 @@ float4 render(float2 uv)
     uv += isB * 1 * dy;
 
     float4 col = gaussian_sample(uv, dx, dy);
-    col = pow(col, (1.6 + _contrast - 0.5));
+    float4 col_left = image.Sample(builtin_texture_sampler, uv - dx);
+    float4 col_left2 = image.Sample(builtin_texture_sampler, uv - dx - dx);
+    float4 col_right = image.Sample(builtin_texture_sampler, uv + dx);
+    float4 col_right2 = image.Sample(builtin_texture_sampler, uv + dx + dx);
+    col = col*0.3 + (col_left + col_right)*0.3 + (col_left2 + col_right2)*0.1;
+    col = pow(col, (1.6 + _contrast - 0.4));
 
     float floor_y = fmod(uv.y * builtin_uv_size.y / 6, 1);
     float ease_r = crt_ease(floor_y, col.r, rand(uv)* 0.1);
     float ease_g = crt_ease(floor_y, col.g, rand(uv)* 0.1);
     float ease_b = crt_ease(floor_y, col.b, rand(uv)* 0.1);
 
-    col.r = (isR + (isG+isB)*_oozing*0.3) * ease_r;
-    col.g = (isG + (isR+isB)*_oozing*0.3) * ease_g;
-    col.b = (isB + (isR+isG)*_oozing*0.3) * ease_b;
+    col.r = (isR + (isG+isB)*_oozing*0.8) * ease_r;
+    col.g = (isG + (isR+isB)*_oozing*0.8) * ease_g;
+    col.b = (isB + (isR+isG)*_oozing*0.8) * ease_b;
 
-    return col;
+    return float4(col.rgb, 1);
 }
